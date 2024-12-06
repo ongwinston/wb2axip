@@ -1,13 +1,19 @@
-CAPI=1
-[main]
-description = Pipelined Wishbone to AXI converter
+CAPI=2:
+name: "wb2axip:wb:wbm2axisp"
+description: "Wishbone to AXI converter"
 
-[fileset rtl]
-files = rtl/wbm2axisp.v
-file_type = verilogSource
+filesets:
+  rtl:
+    files:
+      - rtl/wbm2axisp.v
+      - rtl/wbxbar.v
+      - rtl/skidbuffer.v
+      - rtl/addrdecode.v
+    file_type: verilogSource
 
-[provider]
-name=github
-user=ZipCPU
-repo=wb2axip
-version = master
+targets:
+  default:
+    filesets:
+      - rtl
+
+
